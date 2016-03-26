@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(ProgressMonitor.Startup))]
+[assembly: OwinStartup(typeof(ProgressMonitor.Startup))]
 namespace ProgressMonitor
 {
     public partial class Startup
