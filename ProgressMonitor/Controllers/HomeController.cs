@@ -6,6 +6,10 @@ namespace ProgressMonitor.Controllers
 	{
 		public ActionResult Index()
 		{
+			if (User.Identity.IsAuthenticated)
+			{
+				return RedirectToAction("Index", "MonitorOverview");
+			}
 			return View();
 		}
 
