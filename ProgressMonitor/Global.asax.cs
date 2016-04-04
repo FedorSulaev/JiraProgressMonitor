@@ -3,6 +3,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using ProgressMonitor.Modules;
 
 namespace ProgressMonitor
 {
@@ -20,9 +21,15 @@ namespace ProgressMonitor
 	    private IDependencyResolver CreateAutofacDependencyResolver()
 	    {
 		    ContainerBuilder builder = new ContainerBuilder();
-		    builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
+		    RegisterDependencies(builder);
 		    IContainer container = builder.Build();
 			return new AutofacDependencyResolver(container);
+	    }
+
+	    private void RegisterDependencies(ContainerBuilder builder)
+	    {
+			builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
+		    builder.RegisterModule(new ServiceModule());
 	    }
     }
 }
