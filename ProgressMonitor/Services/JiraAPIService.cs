@@ -29,11 +29,24 @@ namespace ProgressMonitor.Services
 		private string SendRequest(string category, string argument = null, string data = null, 
 			string method = "GET")
 		{
-			string url = $"{_apiUrl}{category}/";
-			if (argument != null)
+			string url = CreateUrl(category, argument);
+			HttpWebRequest request = CreateWebRequest(data, method, url);
+			HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+			return ReadResponse(response);
+		}
+
+		private static string ReadResponse(HttpWebResponse response)
+		{
+			string result = string.Empty;
+			using (StreamReader reader = new StreamReader(response.GetResponseStream()))
 			{
-				url = $"{url}{argument}/";
+				result = reader.ReadToEnd();
 			}
+			return result;
+		}
+
+		private HttpWebRequest CreateWebRequest(string data, string method, string url)
+		{
 			HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
 			request.ContentType = "application/json";
 			request.Method = method;
@@ -45,13 +58,17 @@ namespace ProgressMonitor.Services
 				}
 			}
 			request.Headers.Add("Authorization", "Basic " + _encodedCredentials);
-			HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-			string result = string.Empty;
-			using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+			return request;
+		}
+
+		private string CreateUrl(string category, string argument)
+		{
+			string url = $"{_apiUrl}{category}/";
+			if (argument != null)
 			{
-				result = reader.ReadToEnd();
+				url = $"{url}{argument}/";
 			}
-			return result;
+			return url;
 		}
 	}
 }
