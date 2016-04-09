@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Text;
+using Newtonsoft.Json;
+using ProgressMonitor.Models.JsonSerialization;
 
 namespace ProgressMonitor.Services
 {
@@ -17,6 +20,14 @@ namespace ProgressMonitor.Services
 			_encodedCredentials = EncodeCredentials(
 				ConfigurationManager.AppSettings["JiraUsername"],
 				ConfigurationManager.AppSettings["JiraPassword"]);
+		}
+
+		public IReadOnlyList<Project> GetAllProjects()
+		{
+			JsonSerializer serializer = new JsonSerializer();
+			string data = SendRequest("project");
+			JsonReader reader = new JsonTextReader(new StringReader(data));
+			return serializer.Deserialize<IReadOnlyList<Project>>(reader);
 		}
 
 		private string EncodeCredentials(string username, string password)

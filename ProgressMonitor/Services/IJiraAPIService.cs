@@ -1,7 +1,10 @@
-﻿namespace ProgressMonitor.Services
+﻿using System.Collections.Generic;
+using ProgressMonitor.Models.JsonSerialization;
+
+namespace ProgressMonitor.Services
 {
 	public interface IJiraAPIService
 	{
-		
+		IReadOnlyList<Project> GetAllProjects();
 	}
 }
