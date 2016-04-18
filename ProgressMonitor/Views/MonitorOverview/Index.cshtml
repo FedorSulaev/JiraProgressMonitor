@@ -9,7 +9,12 @@
 @foreach (var project in Model)
 {
     <div>
-        @project.Name
+        <h4>@project.Name</h4>
+        @project.Key<br/>
+        @project.Id<br/>
+        <img src="@project.AvatarUrls["32x32"]"
+             width="32"
+             height="32"/>
         <hr/>
     </div>
 }

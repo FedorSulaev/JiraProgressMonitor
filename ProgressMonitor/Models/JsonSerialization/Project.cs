@@ -5,9 +5,6 @@ namespace ProgressMonitor.Models.JsonSerialization
 {
 	public class Project
 	{
-		[JsonProperty("self")]
-		public string Self { get; set; }
-
 		[JsonProperty("id")]
 		public long Id  { get; set; }
 
