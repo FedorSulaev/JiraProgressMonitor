@@ -25,11 +25,12 @@
     <h4>Versions</h4>
     @foreach (var version in Model.Versions)
     {
-        @version.Name<br/>
+        <a href="@Url.Action("Index", "Version")"><h4>@version.Name</h4></a>
         @version.Id<br/>
         @version.Archived<br/>
         @version.Released<br/>
         @version.StartDate<br/>
         @version.ReleaseDate<br/>
+        <hr/>
     }
 </div>
