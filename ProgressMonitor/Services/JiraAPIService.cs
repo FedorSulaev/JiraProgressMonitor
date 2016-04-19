@@ -22,20 +22,25 @@ namespace ProgressMonitor.Services
 				ConfigurationManager.AppSettings["JiraPassword"]);
 		}
 
-		public IReadOnlyList<Project> GetAllProjects()
+		public IReadOnlyCollection<Project> GetAllProjects()
 		{
-			JsonSerializer serializer = new JsonSerializer();
 			string data = SendRequest("project");
-			JsonReader reader = new JsonTextReader(new StringReader(data));
-			return serializer.Deserialize<IReadOnlyList<Project>>(reader);
+			return DeserializeJsonString<IReadOnlyCollection<Project>>(data);
 		}
 
 		public Project GetProject(long id)
 		{
-			JsonSerializer serializer = new JsonSerializer();
 			string data = SendRequest("project", id.ToString());
-			JsonReader reader = new JsonTextReader(new StringReader(data));
-			return serializer.Deserialize<Project>(reader);
+			return DeserializeJsonString<Project>(data);
+		}
+
+		private T DeserializeJsonString<T>(string data)
+		{
+			JsonSerializer serializer = new JsonSerializer();
+			using (JsonReader reader = new JsonTextReader(new StringReader(data)))
+			{
+				return serializer.Deserialize<T>(reader);
+			}
 		}
 
 		private string EncodeCredentials(string username, string password)
@@ -56,17 +61,20 @@ namespace ProgressMonitor.Services
 
 		private static string ReadResponse(HttpWebResponse response)
 		{
-			string result = string.Empty;
-			using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+			Stream responseStream = response.GetResponseStream();
+			if (responseStream == null)
 			{
-				result = reader.ReadToEnd();
+				return string.Empty;
 			}
-			return result;
+			using (StreamReader reader = new StreamReader(responseStream))
+			{
+				return reader.ReadToEnd();
+			}
 		}
 
 		private HttpWebRequest CreateWebRequest(string data, string method, string url)
 		{
-			HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 			request.ContentType = "application/json";
 			request.Method = method;
 			if (data != null)

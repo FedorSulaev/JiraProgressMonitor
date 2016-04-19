@@ -5,7 +5,7 @@ namespace ProgressMonitor.Services
 {
 	public interface IJiraAPIService
 	{
-		IReadOnlyList<Project> GetAllProjects();
+		IReadOnlyCollection<Project> GetAllProjects();
 
 		Project GetProject(long id);
 	}
