@@ -1,5 +1,35 @@
-﻿@{
+﻿@model ProgressMonitor.Models.JsonSerialization.Project
+
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+<div>
+    <h4>Project</h4>
+    @Model.Name<br/>
+    @Model.Id<br/>
+    @Model.Description<br/>
+    @Model.Key<br/>
+    <img src="@Model.AvatarUrls["32x32"]"
+         width="32"
+         height="32"/>
+    <hr/>
+    <h4>Lead</h4>
+    @Model.Lead.DisplayName<br/>
+    <img src="@Model.Lead.AvatarUrls["32x32"]"
+         width="32"
+         height="32"/>
+    <hr/>
+    <h4>Versions</h4>
+    @foreach (var version in Model.Versions)
+    {
+        @version.Name<br/>
+        @version.Id<br/>
+        @version.Archived<br/>
+        @version.Released<br/>
+        @version.StartDate<br/>
+        @version.ReleaseDate<br/>
+    }
+</div>

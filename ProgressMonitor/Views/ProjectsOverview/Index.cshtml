@@ -9,7 +9,7 @@
 @foreach (var project in Model)
 {
     <div>
-        <a href="../Project/"><h4>@project.Name</h4></a>
+        <a href="@Url.Action("Index", "Project", new { id = project.Id })"><h4>@project.Name</h4></a>
         @project.Key<br/>
         @project.Id<br/>
         <img src="@project.AvatarUrls["32x32"]"

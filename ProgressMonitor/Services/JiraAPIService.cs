@@ -30,6 +30,14 @@ namespace ProgressMonitor.Services
 			return serializer.Deserialize<IReadOnlyList<Project>>(reader);
 		}
 
+		public Project GetProject(long id)
+		{
+			JsonSerializer serializer = new JsonSerializer();
+			string data = SendRequest("project", id.ToString());
+			JsonReader reader = new JsonTextReader(new StringReader(data));
+			return serializer.Deserialize<Project>(reader);
+		}
+
 		private string EncodeCredentials(string username, string password)
 		{
 			string mergedCredentials = $"{username}:{password}";
