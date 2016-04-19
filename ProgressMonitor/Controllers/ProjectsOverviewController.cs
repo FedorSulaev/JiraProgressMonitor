@@ -4,11 +4,11 @@ using ProgressMonitor.Services;
 namespace ProgressMonitor.Controllers
 {
 	[Authorize]
-    public class MonitorOverviewController : Controller
+    public class ProjectsOverviewController : Controller
     {
 		private readonly IJiraAPIService _jiraAPIService;
 
-		public MonitorOverviewController(IJiraAPIService jiraAPIService)
+		public ProjectsOverviewController(IJiraAPIService jiraAPIService)
 		{
 			_jiraAPIService = jiraAPIService;
 		}

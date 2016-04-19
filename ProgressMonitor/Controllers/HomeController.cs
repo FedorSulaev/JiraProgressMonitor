@@ -8,7 +8,7 @@ namespace ProgressMonitor.Controllers
 		{
 			if (User.Identity.IsAuthenticated)
 			{
-				return RedirectToAction("Index", "MonitorOverview");
+				return RedirectToAction("Index", "ProjectsOverview");
 			}
 			return View();
 		}
