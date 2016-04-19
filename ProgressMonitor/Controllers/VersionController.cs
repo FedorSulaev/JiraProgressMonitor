@@ -4,7 +4,7 @@ namespace ProgressMonitor.Controllers
 {
     public class VersionController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(long id)
         {
             return View();
         }
