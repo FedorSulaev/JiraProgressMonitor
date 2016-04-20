@@ -194,6 +194,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JsonSerialization\Issue.cs" />
     <Compile Include="Models\JsonSerialization\JiraUser.cs" />
     <Compile Include="Models\JsonSerialization\Project.cs" />
     <Compile Include="Models\JsonSerialization\Version.cs" />
