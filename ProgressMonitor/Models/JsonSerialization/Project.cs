@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace ProgressMonitor.Models.JsonSerialization
@@ -15,7 +15,7 @@ namespace ProgressMonitor.Models.JsonSerialization
 		public string Name { get; set; }
 
 		[JsonProperty("avatarUrls")]
-		public ReadOnlyDictionary<string, string> AvatarUrls { get; set; } 
+		public IReadOnlyDictionary<string, string> AvatarUrls { get; set; } 
 
 		[JsonProperty("description")]
 		public string Description { get; set; }
@@ -24,6 +24,6 @@ namespace ProgressMonitor.Models.JsonSerialization
 		public JiraUser Lead { get; set; }
 
 		[JsonProperty("versions")]
-		public ReadOnlyCollection<Version> Versions { get; set; }
+		public IReadOnlyCollection<Version> Versions { get; set; }
 	}
 }
