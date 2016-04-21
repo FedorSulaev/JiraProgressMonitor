@@ -36,7 +36,7 @@ namespace ProgressMonitor.Services
 
 		public IReadOnlyCollection<Issue> GetIssuesByVersion(long versionId)
 		{
-			string data = SendRequest("search?jql=FixVersion=" + versionId);
+			string data = SendSearchRequest("search?jql=FixVersion=" + versionId);
 			return DeserializeJsonString<IssuesSearchResult>(data).Issues;
 		}
 
@@ -60,6 +60,17 @@ namespace ProgressMonitor.Services
 			string method = "GET")
 		{
 			string url = CreateUrl(category, argument);
+			return GetResponse(data, method, url);
+		}
+
+		private string SendSearchRequest(string jql, string data = null, string method = "GET")
+		{
+			string url = CreateSearchUrl(jql);
+			return GetResponse(data, method, url);
+		}
+
+		private string GetResponse(string data, string method, string url)
+		{
 			HttpWebRequest request = CreateWebRequest(data, method, url);
 			HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 			return ReadResponse(response);
@@ -102,6 +113,11 @@ namespace ProgressMonitor.Services
 				url = $"{url}{argument}/";
 			}
 			return url;
+		}
+
+		private string CreateSearchUrl(string jql)
+		{
+			return $"{_apiUrl}{jql}";
 		}
 	}
 }
