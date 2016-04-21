@@ -1,5 +1,16 @@
-﻿@{
+﻿@model IReadOnlyCollection<ProgressMonitor.Models.JsonSerialization.Issue>
+
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+<div>
+    @foreach (var issue in Model)
+    {
+        <h4>@issue.Key</h4>
+        @issue.Id
+        <hr/>
+    }
+</div>

@@ -1,12 +1,21 @@
 ﻿using System.Web.Mvc;
+using ProgressMonitor.Services;
 
 namespace ProgressMonitor.Controllers
 {
     public class VersionController : Controller
     {
-        public ActionResult Index(long id)
-        {
-            return View();
+	    private readonly IJiraAPIService _jiraAPIService;
+
+	    public VersionController(IJiraAPIService jiraAPIService)
+	    {
+		    _jiraAPIService = jiraAPIService;
+	    }
+
+	    public ActionResult Index(long id)
+	    {
+		    var model = _jiraAPIService.GetIssuesByVersion(id);
+            return View(model);
         }
     }
 }
