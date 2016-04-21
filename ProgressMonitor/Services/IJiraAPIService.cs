@@ -8,5 +8,7 @@ namespace ProgressMonitor.Services
 		IReadOnlyCollection<Project> GetAllProjects();
 
 		Project GetProject(long id);
+
+		IReadOnlyCollection<Issue> GetIssuesByVersion(long versionId);
 	}
 }

@@ -34,6 +34,12 @@ namespace ProgressMonitor.Services
 			return DeserializeJsonString<Project>(data);
 		}
 
+		public IReadOnlyCollection<Issue> GetIssuesByVersion(long versionId)
+		{
+			string data = SendRequest("search?jql=FixVersion=" + versionId);
+			return DeserializeJsonString<IssuesSearchResult>(data).Issues;
+		}
+
 		private T DeserializeJsonString<T>(string data)
 		{
 			JsonSerializer serializer = new JsonSerializer();

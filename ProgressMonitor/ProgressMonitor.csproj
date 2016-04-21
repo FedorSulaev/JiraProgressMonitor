@@ -197,6 +197,7 @@
     <Compile Include="Models\JsonSerialization\Issue.cs" />
     <Compile Include="Models\JsonSerialization\JiraUser.cs" />
     <Compile Include="Models\JsonSerialization\Project.cs" />
+    <Compile Include="Models\JsonSerialization\IssuesSearchResult.cs" />
     <Compile Include="Models\JsonSerialization\Version.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
