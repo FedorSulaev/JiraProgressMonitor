@@ -3,6 +3,7 @@ using ProgressMonitor.Services;
 
 namespace ProgressMonitor.Controllers
 {
+	[Authorize]
     public class ProjectController : Controller
     {
 	    private readonly IJiraAPIService _jiraAPIService;
