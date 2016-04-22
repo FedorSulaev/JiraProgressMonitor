@@ -1,5 +1,15 @@
-﻿@{
+﻿@model IReadOnlyCollection<string>
+
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>title</h2>
+
+<div>
+    @foreach (var username in Model)
+    {
+        <h4>@username</h4>
+        <hr/>
+    }
+</div>
