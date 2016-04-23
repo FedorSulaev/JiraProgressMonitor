@@ -5,10 +5,10 @@ namespace ProgressMonitor.Services
 {
 	public interface IJiraAPIService
 	{
-		IReadOnlyCollection<Project> GetAllProjects();
+		IReadOnlyCollection<JiraProject> GetAllProjects();
 
-		Project GetProject(long id);
+		JiraProject GetProject(long id);
 
-		IReadOnlyCollection<Issue> GetIssuesByVersion(long versionId);
+		IReadOnlyCollection<JiraIssue> GetIssuesByVersion(long versionId);
 	}
 }

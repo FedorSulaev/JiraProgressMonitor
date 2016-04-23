@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ProgressMonitor.Models.JsonSerialization
 {
-	public class Version
+	public class JiraVersion
 	{
 		[JsonProperty("id")]
 		public long Id { get; set; }

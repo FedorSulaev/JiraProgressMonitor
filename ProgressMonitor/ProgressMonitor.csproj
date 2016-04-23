@@ -195,11 +195,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\JsonSerialization\Issue.cs" />
+    <Compile Include="Models\JsonSerialization\JiraIssue.cs" />
     <Compile Include="Models\JsonSerialization\JiraUser.cs" />
-    <Compile Include="Models\JsonSerialization\Project.cs" />
-    <Compile Include="Models\JsonSerialization\IssuesSearchResult.cs" />
-    <Compile Include="Models\JsonSerialization\Version.cs" />
+    <Compile Include="Models\JsonSerialization\JiraProject.cs" />
+    <Compile Include="Models\JsonSerialization\JiraIssuesSearchResult.cs" />
+    <Compile Include="Models\JsonSerialization\JiraVersion.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

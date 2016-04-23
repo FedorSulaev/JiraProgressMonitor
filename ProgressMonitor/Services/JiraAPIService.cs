@@ -22,22 +22,22 @@ namespace ProgressMonitor.Services
 				ConfigurationManager.AppSettings["JiraPassword"]);
 		}
 
-		public IReadOnlyCollection<Project> GetAllProjects()
+		public IReadOnlyCollection<JiraProject> GetAllProjects()
 		{
 			string data = SendRequest("project");
-			return DeserializeJsonString<IReadOnlyCollection<Project>>(data);
+			return DeserializeJsonString<IReadOnlyCollection<JiraProject>>(data);
 		}
 
-		public Project GetProject(long id)
+		public JiraProject GetProject(long id)
 		{
 			string data = SendRequest("project", id.ToString());
-			return DeserializeJsonString<Project>(data);
+			return DeserializeJsonString<JiraProject>(data);
 		}
 
-		public IReadOnlyCollection<Issue> GetIssuesByVersion(long versionId)
+		public IReadOnlyCollection<JiraIssue> GetIssuesByVersion(long versionId)
 		{
 			string data = SendSearchRequest("search?jql=FixVersion=" + versionId);
-			return DeserializeJsonString<IssuesSearchResult>(data).Issues;
+			return DeserializeJsonString<JiraIssuesSearchResult>(data).Issues;
 		}
 
 		private T DeserializeJsonString<T>(string data)

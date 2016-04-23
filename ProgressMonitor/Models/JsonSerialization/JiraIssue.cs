@@ -2,7 +2,7 @@
 
 namespace ProgressMonitor.Models.JsonSerialization
 {
-	public class Issue
+	public class JiraIssue
 	{
 		[JsonProperty("id")]
 		public long Id { get; set; }

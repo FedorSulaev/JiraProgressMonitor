@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace ProgressMonitor.Models.JsonSerialization
 {
-	public class IssuesSearchResult
+	public class JiraIssuesSearchResult
 	{
 		[JsonProperty("issues")]
-		public IReadOnlyCollection<Issue> Issues { get; set; }
+		public IReadOnlyCollection<JiraIssue> Issues { get; set; }
 	}
 }
