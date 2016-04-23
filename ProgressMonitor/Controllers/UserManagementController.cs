@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using ProgressMonitor.Constants;
-using ProgressMonitor.Models;
+using ProgressMonitor.Models.DbModels;
 
 namespace ProgressMonitor.Controllers
 {

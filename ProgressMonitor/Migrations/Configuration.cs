@@ -2,7 +2,7 @@ using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ProgressMonitor.Constants;
-using ProgressMonitor.Models;
+using ProgressMonitor.Models.DbModels;
 
 namespace ProgressMonitor.Migrations
 {
