@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using ProgressMonitor.Constants;
+using ProgressMonitor.Models.JsonSerialization;
 using ProgressMonitor.Services;
 
 namespace ProgressMonitor.Controllers
@@ -16,7 +20,15 @@ namespace ProgressMonitor.Controllers
 		// GET: MonitorOverview
         public ActionResult Index()
         {
-	        var model = _jiraAPIService.GetAllProjects();
+	        IReadOnlyCollection<JiraProject> model;
+	        if (User.IsInRole(UserRoles.AdminRole))
+	        {
+				model = _jiraAPIService.GetAllProjects();
+			}
+	        else
+	        {
+		        model = _jiraAPIService.GetProjectsByUserId(User.Identity.GetUserId());
+	        }
             return View(model);
         }
     }

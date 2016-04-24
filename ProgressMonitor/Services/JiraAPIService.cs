@@ -28,6 +28,11 @@ namespace ProgressMonitor.Services
 			return DeserializeJsonString<IReadOnlyCollection<JiraProject>>(data);
 		}
 
+		public IReadOnlyCollection<JiraProject> GetProjectsByUserId(string userId)
+		{
+			throw new NotImplementedException();
+		}
+
 		public JiraProject GetProject(long id)
 		{
 			string data = SendRequest("project", id.ToString());
