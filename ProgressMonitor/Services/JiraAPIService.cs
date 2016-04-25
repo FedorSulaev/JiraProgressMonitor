@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
+using ProgressMonitor.Models.DbModels;
 using ProgressMonitor.Models.JsonSerialization;
 
 namespace ProgressMonitor.Services
@@ -13,9 +15,11 @@ namespace ProgressMonitor.Services
 	{
 		private readonly string _apiUrl;
 		private readonly string _encodedCredentials;
+		private readonly ApplicationDbContext _context;
 
 		public JiraAPIService()
 		{
+			_context = new ApplicationDbContext();
 			_apiUrl = ConfigurationManager.AppSettings["JiraURL"];
 			_encodedCredentials = EncodeCredentials(
 				ConfigurationManager.AppSettings["JiraUsername"],
@@ -30,7 +34,10 @@ namespace ProgressMonitor.Services
 
 		public IReadOnlyCollection<JiraProject> GetProjectsByUserId(string userId)
 		{
-			throw new NotImplementedException();
+			IReadOnlyCollection<JiraProject> projects = GetAllProjects();
+			return projects.Where(p => _context.ProjectSet.Any(ps => ps.Id == p.Id)
+				&& _context.ProjectSet.First(ps => ps.Id == p.Id).UsersWithAccess
+				.Any(u => u.Id == userId)).ToList();
 		}
 
 		public JiraProject GetProject(long id)
