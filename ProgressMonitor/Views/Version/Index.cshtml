@@ -1,10 +1,10 @@
 ﻿@model IReadOnlyCollection<ProgressMonitor.Models.JsonSerialization.JiraIssue>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Issues";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
     @foreach (var issue in Model)
