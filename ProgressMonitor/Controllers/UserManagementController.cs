@@ -20,5 +20,10 @@ namespace ProgressMonitor.Controllers
 			var model = _context.Users.Select(u => u.UserName).ToList();
             return View(model);
         }
+
+		public ActionResult UserSettings()
+		{
+			return View();
+		}
     }
 }

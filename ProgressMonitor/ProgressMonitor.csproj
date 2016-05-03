@@ -275,6 +275,7 @@
     <Content Include="Views\ProjectsOverview\Index.cshtml" />
     <None Include="Views\Project\Index.cshtml" />
     <None Include="Views\UserManagement\Index.cshtml" />
+    <None Include="Views\UserManagement\UserSettings.cshtml" />
     <None Include="Views\Version\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

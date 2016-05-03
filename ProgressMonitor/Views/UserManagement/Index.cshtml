@@ -9,7 +9,7 @@
 <div>
     @foreach (var username in Model)
     {
-        <h4>@username</h4>
+        <a href="@Url.Action("UserSettings", "UserManagement")"><h4>@username</h4></a>
         <hr/>
     }
 </div>
