@@ -6,7 +6,7 @@ namespace ProgressMonitor.Services
 	public interface IJiraAPIService
 	{
 		IReadOnlyCollection<JiraProject> GetAllProjects();
-		IReadOnlyCollection<JiraProject> GetProjectsByUserId(string userId);
+		IReadOnlyDictionary<JiraProject, bool> GetProjectAccessForUser(string userId);
 
 		JiraProject GetProject(long id);
 

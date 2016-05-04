@@ -1,7 +1,22 @@
-﻿@{
+﻿@model ProgressMonitor.Models.UserSettingsViewModel
+
+@{
     ViewBag.Title = "User Settings";
 }
 
 <h2>@ViewBag.Title</h2>
 
-<div></div>
+
+<div>
+    @using (Html.BeginForm("UserSettings", "UserManagement", FormMethod.Post, new { model = Model }))
+    {
+        foreach (var projectAccess in Model.ProjectAccess)
+        {
+            <input type="checkbox"
+                   value="@projectAccess.Key.Id"
+                   checked="@projectAccess.Value"/>
+            @projectAccess.Key.Name
+            <br/>
+        }
+    }
+</div>

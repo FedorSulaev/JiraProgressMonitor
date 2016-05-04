@@ -32,12 +32,17 @@ namespace ProgressMonitor.Services
 			return DeserializeJsonString<IReadOnlyCollection<JiraProject>>(data);
 		}
 
-		public IReadOnlyCollection<JiraProject> GetProjectsByUserId(string userId)
+		public IReadOnlyDictionary<JiraProject, bool> GetProjectAccessForUser(string userId)
 		{
 			IReadOnlyCollection<JiraProject> projects = GetAllProjects();
-			return projects.Where(p => _context.ProjectSet.Any(ps => ps.Id == p.Id)
-				&& _context.ProjectSet.First(ps => ps.Id == p.Id).UsersWithAccess
-				.Any(u => u.Id == userId)).ToList();
+			Dictionary<JiraProject, bool> projectAccess = new Dictionary<JiraProject, bool>();
+			foreach (JiraProject jiraProject in projects)
+			{
+				projectAccess[jiraProject] = _context.ProjectSet.Any(ps => ps.Id == jiraProject.Id)
+					&& _context.ProjectSet.First(ps => ps.Id == jiraProject.Id).UsersWithAccess
+						.Any(u => u.Id == userId);
+			}
+			return projectAccess;
 		}
 
 		public JiraProject GetProject(long id)

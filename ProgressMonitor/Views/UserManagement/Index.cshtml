@@ -1,4 +1,4 @@
-﻿@model IReadOnlyCollection<string>
+﻿@model IReadOnlyCollection<ProgressMonitor.Models.UserViewModel>
 
 @{
     ViewBag.Title = "Users";
@@ -7,9 +7,9 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-    @foreach (var username in Model)
+    @foreach (var user in Model)
     {
-        <a href="@Url.Action("UserSettings", "UserManagement")"><h4>@username</h4></a>
+        <a href="@Url.Action("UserSettings", "UserManagement", new { userId = user.Id })"><h4>@user.Username</h4></a>
         <hr/>
     }
 </div>

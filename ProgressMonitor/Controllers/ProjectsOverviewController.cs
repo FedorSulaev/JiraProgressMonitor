@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using ProgressMonitor.Constants;
@@ -27,7 +28,9 @@ namespace ProgressMonitor.Controllers
 			}
 	        else
 	        {
-		        model = _jiraAPIService.GetProjectsByUserId(User.Identity.GetUserId());
+		        model = _jiraAPIService.GetProjectAccessForUser(User.Identity.GetUserId())
+					.Where(pa => pa.Value)
+					.Select(pa => pa.Key).ToList();
 	        }
             return View(model);
         }
