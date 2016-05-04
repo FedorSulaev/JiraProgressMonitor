@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201604230918206_ApplicationUser_Project.Designer.cs">
       <DependentUpon>201604230918206_ApplicationUser_Project.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605041601088_ProjectJiraIdProperty.cs" />
+    <Compile Include="Migrations\201605041601088_ProjectJiraIdProperty.Designer.cs">
+      <DependentUpon>201605041601088_ProjectJiraIdProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DbModels\ApplicationDbContext.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604230918206_ApplicationUser_Project.resx">
       <DependentUpon>201604230918206_ApplicationUser_Project.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605041601088_ProjectJiraIdProperty.resx">
+      <DependentUpon>201605041601088_ProjectJiraIdProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

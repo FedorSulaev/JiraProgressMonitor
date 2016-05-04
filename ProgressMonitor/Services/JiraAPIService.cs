@@ -38,8 +38,8 @@ namespace ProgressMonitor.Services
 			Dictionary<JiraProject, bool> projectAccess = new Dictionary<JiraProject, bool>();
 			foreach (JiraProject jiraProject in projects)
 			{
-				projectAccess[jiraProject] = _context.ProjectSet.Any(ps => ps.Id == jiraProject.Id)
-					&& _context.ProjectSet.First(ps => ps.Id == jiraProject.Id).UsersWithAccess
+				projectAccess[jiraProject] = _context.ProjectSet.Any(ps => ps.JiraId == jiraProject.Id)
+					&& _context.ProjectSet.First(ps => ps.JiraId == jiraProject.Id).UsersWithAccess
 						.Any(u => u.Id == userId);
 			}
 			return projectAccess;
