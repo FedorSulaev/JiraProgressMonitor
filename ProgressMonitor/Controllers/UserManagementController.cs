@@ -79,7 +79,7 @@ namespace ProgressMonitor.Controllers
 				user.AccessibleProjects.Add(project);
 			}
 			_context.SaveChanges();
-			return UserSettings(model.Id);
+			return RedirectToAction("UserSettings", new {userId = model.Id});
 		}
     }
 }
