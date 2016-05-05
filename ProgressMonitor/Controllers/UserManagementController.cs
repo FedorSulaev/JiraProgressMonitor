@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Mvc;
 using ProgressMonitor.Constants;
@@ -34,6 +33,10 @@ namespace ProgressMonitor.Controllers
 
 		public ActionResult UserSettings(string userId)
 		{
+			if (!_context.Users.Any(u => u.Id == userId))
+			{
+				return null;
+			}
 			IReadOnlyDictionary<JiraProject, bool> projectAccess = 
 				_jiraAPIService.GetProjectAccessForUser(userId);
 			var model = new UserSettingsViewModel
