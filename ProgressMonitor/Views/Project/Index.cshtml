@@ -25,7 +25,13 @@
     <h4>Versions</h4>
     @foreach (var version in Model.Versions)
     {
-        <a href="@Url.Action("Index", "Version", new { id = version.Id })"><h4>@version.Name</h4></a>
+        <a href="@Url.Action("Index", "Version", new
+                 {
+                     versionId = version.Id,
+                     projectId = Model.Id
+                 })">
+            <h4>@version.Name</h4>
+        </a>
         @version.Id<br/>
         @version.Archived<br/>
         @version.Released<br/>
