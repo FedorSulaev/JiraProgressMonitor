@@ -4,7 +4,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using ProgressMonitor.Models;
 using ProgressMonitor.Models.DbModels;
 
 namespace ProgressMonitor
