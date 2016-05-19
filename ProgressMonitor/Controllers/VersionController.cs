@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using ProgressMonitor.Constants;
 using ProgressMonitor.Models.DbModels;
 using ProgressMonitor.Services;
 
@@ -21,7 +22,7 @@ namespace ProgressMonitor.Controllers
 	    public ActionResult Index(long versionId, long projectId)
 	    {
 		    string userId = User.Identity.GetUserId();
-			if (_context.Users.First(u => u.Id == userId)
+			if (!User.IsInRole(UserRoles.AdminRole) && _context.Users.First(u => u.Id == userId)
 				.AccessibleProjects.All(p => p.JiraId != projectId))
 			{
 				return null;
