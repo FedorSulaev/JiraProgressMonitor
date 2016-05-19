@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -8,14 +9,14 @@ namespace ProgressMonitor.Migrations
 {
 	using System.Data.Entity.Migrations;
 
-	internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+	internal sealed class Configuration : DbMigrationsConfiguration<ProgressMonitorDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(ProgressMonitorDbContext context)
         {
 			//  This method will be called after migrating to the latest version.
 
@@ -43,7 +44,7 @@ namespace ProgressMonitor.Migrations
 		        UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(context);
 				UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(userStore);
 		        ApplicationUser adminUser = new ApplicationUser {UserName = "admin"};
-		        userManager.Create(adminUser, "password");
+		        userManager.Create(adminUser, ConfigurationManager.AppSettings["AdminPassword"]);
 				userManager.AddToRole(adminUser.Id, UserRoles.AdminRole);
 	        }
         }

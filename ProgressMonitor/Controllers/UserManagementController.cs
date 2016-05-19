@@ -13,12 +13,12 @@ namespace ProgressMonitor.Controllers
     public class UserManagementController : Controller
     {
 		private readonly IJiraAPIService _jiraAPIService;
-		private readonly ApplicationDbContext _context;
+		private readonly ProgressMonitorDbContext _context;
 
 		public UserManagementController(IJiraAPIService jiraAPIService)
 		{
 			_jiraAPIService = jiraAPIService;
-			_context = new ApplicationDbContext();
+			_context = new ProgressMonitorDbContext();
 		}
 
 		public ActionResult Index()

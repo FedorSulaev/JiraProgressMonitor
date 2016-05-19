@@ -187,21 +187,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603281036597_Initial.cs" />
-    <Compile Include="Migrations\201603281036597_Initial.Designer.cs">
-      <DependentUpon>201603281036597_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604230918206_ApplicationUser_Project.cs" />
-    <Compile Include="Migrations\201604230918206_ApplicationUser_Project.Designer.cs">
-      <DependentUpon>201604230918206_ApplicationUser_Project.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605041601088_ProjectJiraIdProperty.cs" />
-    <Compile Include="Migrations\201605041601088_ProjectJiraIdProperty.Designer.cs">
-      <DependentUpon>201605041601088_ProjectJiraIdProperty.cs</DependentUpon>
+    <Compile Include="Migrations\201605191119446_initial.cs" />
+    <Compile Include="Migrations\201605191119446_initial.Designer.cs">
+      <DependentUpon>201605191119446_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DbModels\ApplicationDbContext.cs" />
+    <Compile Include="Models\DbModels\ProgressMonitorDbContext.cs" />
     <Compile Include="Models\DbModels\IdentityModels.cs" />
     <Compile Include="Models\DbModels\Project.cs" />
     <Compile Include="Models\JsonSerialization\JiraIssue.cs" />
@@ -299,14 +291,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603281036597_Initial.resx">
-      <DependentUpon>201603281036597_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604230918206_ApplicationUser_Project.resx">
-      <DependentUpon>201604230918206_ApplicationUser_Project.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605041601088_ProjectJiraIdProperty.resx">
-      <DependentUpon>201605041601088_ProjectJiraIdProperty.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605191119446_initial.resx">
+      <DependentUpon>201605191119446_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,12 +10,12 @@ namespace ProgressMonitor.Controllers
     public class VersionController : Controller
     {
 	    private readonly IJiraAPIService _jiraAPIService;
-		private readonly ApplicationDbContext _context;
+		private readonly ProgressMonitorDbContext _context;
 
 	    public VersionController(IJiraAPIService jiraAPIService)
 	    {
 		    _jiraAPIService = jiraAPIService;
-			_context = new ApplicationDbContext();
+			_context = new ProgressMonitorDbContext();
 	    }
 
 	    public ActionResult Index(long versionId, long projectId)

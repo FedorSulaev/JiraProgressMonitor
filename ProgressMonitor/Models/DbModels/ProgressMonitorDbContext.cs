@@ -3,19 +3,19 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ProgressMonitor.Models.DbModels
 {
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+	public class ProgressMonitorDbContext : IdentityDbContext<ApplicationUser>
 	{
 		public DbSet<Project> ProjectSet { get; set; }
 
-		public ApplicationDbContext()
+		public ProgressMonitorDbContext()
 			: base("DefaultConnection", throwIfV1Schema: false)
 		{
 			
 		}
 
-		public static ApplicationDbContext Create()
+		public static ProgressMonitorDbContext Create()
 		{
-			return new ApplicationDbContext();
+			return new ProgressMonitorDbContext();
 		}
 	}
 }

@@ -15,11 +15,11 @@ namespace ProgressMonitor.Services
 	{
 		private readonly string _apiUrl;
 		private readonly string _encodedCredentials;
-		private readonly ApplicationDbContext _context;
+		private readonly ProgressMonitorDbContext _context;
 
 		public JiraAPIService()
 		{
-			_context = new ApplicationDbContext();
+			_context = new ProgressMonitorDbContext();
 			_apiUrl = ConfigurationManager.AppSettings["JiraURL"];
 			_encodedCredentials = EncodeCredentials(
 				ConfigurationManager.AppSettings["JiraUsername"],
