@@ -270,10 +270,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ProjectsOverview\Index.cshtml" />
-    <None Include="Views\Project\Index.cshtml" />
-    <None Include="Views\UserManagement\Index.cshtml" />
-    <None Include="Views\UserManagement\UserSettings.cshtml" />
-    <None Include="Views\Version\Index.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\UserManagement\Index.cshtml" />
+    <Content Include="Views\UserManagement\UserSettings.cshtml" />
+    <Content Include="Views\Version\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
