@@ -1,4 +1,8 @@
-﻿using Microsoft.Owin;
+﻿#if !DEBUG
+using System.Data.Entity.Migrations;
+using ProgressMonitor.Migrations;
+#endif
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(ProgressMonitor.Startup))]
