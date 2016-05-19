@@ -1,6 +1,7 @@
 ﻿#if !DEBUG
+using System.Configuration;
 using System.Data.Entity.Migrations;
-using ProgressMonitor.Migrations;
+using Configuration = ProgressMonitor.Migrations.Configuration;
 #endif
 using Microsoft.Owin;
 using Owin;
@@ -15,8 +16,11 @@ namespace ProgressMonitor
 			ConfigureAuth(app);
 			// CODE FIRST MIGRATIONS
 			#if !DEBUG
-			var migrator = new DbMigrator(new Configuration());
-			migrator.Update();
+			if (bool.Parse(ConfigurationManager.AppSettings["MigrateDatabaseToLatestVersion"]))
+			{
+				var migrator = new DbMigrator(new Configuration());
+				migrator.Update();
+			}
 			#endif
 		}
 	}
