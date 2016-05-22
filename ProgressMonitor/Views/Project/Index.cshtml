@@ -8,19 +8,17 @@
 
 <div>
     <h4>Project</h4>
-    @Model.Name<br/>
-    @Model.Id<br/>
-    @Model.Description<br/>
-    @Model.Key<br/>
     <img src="@Model.AvatarUrls["32x32"]"
          width="32"
          height="32"/>
+    @Model.Name (@Model.Key)<br/>
+    @Model.Description<br />
     <hr/>
     <h4>Lead</h4>
-    @Model.Lead.DisplayName<br/>
     <img src="@Model.Lead.AvatarUrls["32x32"]"
          width="32"
          height="32"/>
+    @Model.Lead.DisplayName
     <hr/>
     <h4>Versions</h4>
     @foreach (var version in Model.Versions)
