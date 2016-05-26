@@ -30,11 +30,7 @@
                  })">
             <h4>@version.Name</h4>
         </a>
-        @version.Id<br/>
-        @version.Archived<br/>
-        @version.Released<br/>
-        @version.StartDate<br/>
-        @version.ReleaseDate<br/>
+        @version.StartDate.ToShortDateString() @: -  @version.ReleaseDate.ToShortDateString()<br/>
         <hr/>
     }
 </div>
